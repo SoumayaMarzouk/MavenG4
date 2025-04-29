@@ -18,8 +18,8 @@ private String prenom;
 @ManyToOne 
 @JoinColumn(name = "department_id") 
 private Departement department; 
-
-@ManyToMany 
+//(fetch = FetchType.EAGER)
+@ManyToMany(fetch = FetchType.EAGER)
 @JoinTable(name = "personne_projet", 
 	joinColumns = @JoinColumn(name = "personne_id"), 
 	inverseJoinColumns = @JoinColumn(name = "projet_id")) 

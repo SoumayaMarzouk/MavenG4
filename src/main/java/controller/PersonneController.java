@@ -103,11 +103,21 @@ String nom=request.getParameter("nom");
 if(pdao.update(id,cin,nom,prenom)) 
 	     message="personne "+cin+" mis a jour avec succes";
 }
-List<Personne> results = pdao.findAll();
+List<Personne> results;
+if(request.getParameter("select")!=null) {
+	message="Liste des Personne par projet";
+	long id=Long.parseLong(request.getParameter("select"));
+	results=pdao.getPersonnesByProjet(id);
+
+	}
+else {
+results = pdao.findAll();
+}
 request.setAttribute("listPersonne",results);
 request.setAttribute("message",message);
 RequestDispatcher rd=getServletContext().getRequestDispatcher("/PersonneView.jsp");
 rd.forward(request, response); 
+
 }
 
 

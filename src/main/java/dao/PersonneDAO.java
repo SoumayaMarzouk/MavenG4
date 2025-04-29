@@ -93,10 +93,22 @@ public class PersonneDAO {
 	public List<Personne> findAll(){
 		   Session session=sessionFactory.openSession();
 		   List<Personne> result = 
-		 		session.createQuery("from Personne", Personne.class).getResultList(); 
+		 		session.createQuery("from Personne as p join fetch p.projets", Personne.class).getResultList(); 
 		   session.close(); 
 		   return result;
 		
 		}
+	public List<Personne> getPersonnesByProjet(long projetId){
+		   Session session=sessionFactory.openSession();
+		  // List<Personne> result = 
+		 		//session.createQuery("from Personne as p join fetch p.projets as pr where pr.id="+projetId, Personne.class).getResultList(); 
+		   Projet pr=session.get(Projet.class, projetId);
+		   List<Personne> result = pr.getPersonnes();
+		   System.out.println(result);
+		   session.close(); 
+		   return result;
+		
+		}
+	
 
 }
