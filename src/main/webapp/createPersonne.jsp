@@ -8,8 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% List<Projet> pr=(List<Projet>)request.getAttribute("listProj");
-List<Departement> d=(List<Departement>)request.getAttribute("listDept");%>
+
 <form action="PersonneController" method=post>
 CIN : <input type=text name=cin><br>
 Nom : <input type=text name=nom><br>
@@ -17,15 +16,15 @@ Prenom : <input type=text name=prenom><br>
 Liste Departement
 
 <select name=dept>
-<% for(Departement x:d){ %>
-<option value=<%=x.getId() %>> <%=x.getNom() %> </option>
-<% } %>
+	      	<c:forEach items="${listDept}" var="d" varStatus="status">
+				<option value=${d.id} > ${d.nom}  </option>
+			</c:forEach>
 </select><br>
 Liste des projets<br>
-<% for(Projet x:pr){ %>
-<input type=checkbox value=<%=x.getId() %> name=proj> <%=x.getNom() %><br>
-<% } %>
 
+	      	<c:forEach items="${listProj}" var="pr" varStatus="status">
+				<input type=checkbox value='${pr.id}' name=proj> ${pr.nom}<br>
+			</c:forEach>
 <input type=submit name=create value=Ajouter ><br>
 </form>
 </body>

@@ -67,7 +67,7 @@ else {
 List<Personne> results = pdao.findAll();
 request.setAttribute("listPersonne",results);
 request.setAttribute("message",message);
-RequestDispatcher rd=getServletContext().getRequestDispatcher("/PersonneView.jsp");
+RequestDispatcher rd=getServletContext().getRequestDispatcher("/PersonneView1.jsp");
 rd.forward(request, response); 
 }
 }
@@ -115,7 +115,7 @@ results = pdao.findAll();
 }
 request.setAttribute("listPersonne",results);
 request.setAttribute("message",message);
-RequestDispatcher rd=getServletContext().getRequestDispatcher("/PersonneView.jsp");
+RequestDispatcher rd=getServletContext().getRequestDispatcher("/PersonneView1.jsp");
 rd.forward(request, response); 
 
 }
